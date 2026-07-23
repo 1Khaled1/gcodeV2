@@ -252,6 +252,50 @@ table.pts .del{background:none;border:none;color:var(--red);font-size:1rem;paddi
 .eqrow button{font-family:'IBM Plex Mono',monospace; font-size:.68rem; text-align:left; background:var(--panel2); border:1px solid var(--line); border-radius:5px; color:var(--txt); padding:5px 7px; word-break:break-all}
 .eqrow button:hover{border-color:var(--amber-dim); color:var(--amber)}
 #cvOut{font-family:'IBM Plex Mono',monospace; font-size:.74rem; width:100%}
+/* ---------- alarmes machine ---------- */
+#alarmbox{display:none; margin:10px 0}
+.alhead{display:flex; align-items:center; gap:9px; background:#2a0f16; border:1px solid var(--red);
+  border-bottom:none; border-radius:9px 9px 0 0; padding:9px 12px; color:#ff9aa5;
+  font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; font-weight:700}
+.alwrap{border:1px solid var(--red); border-top:none; border-radius:0 0 9px 9px; background:#190d11; padding:4px 0}
+.alrow{padding:9px 12px; border-bottom:1px dashed #3a1c24; cursor:pointer}
+.alrow:last-child{border-bottom:none}
+.alrow:hover{background:#201116}
+.altop{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.alcode{font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:.78rem; color:#fff;
+  background:var(--red); border-radius:5px; padding:2px 8px; letter-spacing:.04em}
+.almsg{font-size:.82rem; color:#ffd7dc; font-weight:600}
+.alline{margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:#ff9aa5}
+.aldet{font-family:'IBM Plex Mono',monospace; font-size:.7rem; color:#c9a3ab; margin-top:5px}
+.aldet b{color:#fff}
+.alfix{font-size:.72rem; color:var(--muted); margin-top:4px; line-height:1.45}
+#alReset{margin:8px 12px 10px}
+#alarmChip{display:none; position:absolute; top:12px; left:50%; transform:translateX(-50%); z-index:14;
+  background:rgba(42,15,22,.94); border:1px solid var(--red); color:#ff9aa5; border-radius:99px;
+  padding:6px 15px; font-size:.66rem; letter-spacing:.16em; font-weight:700;
+  backdrop-filter:blur(4px); animation:alblink 1.2s ease-in-out infinite}
+@keyframes alblink{0%,100%{opacity:1} 50%{opacity:.45}}
+
+/* ---------- usure ---------- */
+.wcard{border:1px solid var(--line); border-radius:10px; padding:12px 14px; background:var(--panel2); margin:8px 0}
+.wcard.alarm{border-color:var(--red); background:#1c1013}
+.wcard.warn{border-color:#8a6a10}
+.wtitle{font-weight:700; font-size:.88rem; color:var(--txt); margin-bottom:3px}
+.wsub{font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:var(--muted)}
+.wbar{height:9px; border-radius:99px; background:#151b22; border:1px solid var(--line); margin:9px 0 6px; overflow:hidden}
+.wbar i{display:block; height:100%; background:linear-gradient(90deg,#3d8f4f,#ffb000)}
+.wbar.warn i{background:linear-gradient(90deg,#ffb000,#ff8c00)}
+.wbar.alarm i{background:linear-gradient(90deg,#ff8c00,var(--red))}
+.wstate{font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; padding:2px 9px; border-radius:99px; border:1px solid var(--line); color:var(--muted)}
+.wstate.ok{color:var(--green); border-color:#2f5b3a} .wstate.warn{color:#ffb000; border-color:#6b4a00}
+.wstate.alarm{color:var(--red); border-color:#5c2830; background:#25131a}
+.wstate.new{color:#7ea2ff; border-color:#2f3f6b}
+.wrow{display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:.74rem; padding:6px 0; border-bottom:1px dashed #202832}
+.wrow:last-child{border-bottom:none}
+.wrow b{font-family:'IBM Plex Mono',monospace; color:var(--amber); font-weight:600}
+.walert{border:1px solid var(--red); background:#22121a; color:#ff9aa5; border-radius:9px; padding:10px 12px; font-size:.8rem; margin:8px 0}
+.wok{border:1px solid #2f5b3a; background:#101d15; color:var(--green); border-radius:9px; padding:9px 12px; font-size:.78rem; margin:8px 0}
+
 /* ---------- bibliothèque ---------- */
 .lib-card{border:1px solid var(--line); border-radius:9px; padding:10px 12px; margin:8px 0; background:var(--panel2)}
 .lib-card .lname{font-weight:700; color:var(--txt); font-size:.86rem; display:flex; align-items:center; gap:8px; flex-wrap:wrap}
@@ -312,6 +356,7 @@ table.pts .del{background:none;border:none;color:var(--red);font-size:1rem;paddi
   #dro{transform:scale(.82); transform-origin:top left}
   #legend{display:none}
   #viewtools{top:10px; right:10px; gap:6px}
+  #alarmChip{top:auto; bottom:88px; font-size:.58rem; padding:5px 11px}
   #viewtools button{width:40px; height:40px}
   #measures{left:8px; bottom:78px; max-width:62vw; max-height:40%}
   #mobiletip{display:block; position:absolute; bottom:76px; right:10px; font-size:.6rem; color:var(--muted)}
@@ -368,6 +413,7 @@ table.pts .del{background:none;border:none;color:var(--red);font-size:1rem;paddi
   <button class="navitem" data-tab="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>Copilote IA</button>
   <button class="navitem" data-tab="qz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg>Quiz de révision</button>
   <button class="navitem" data-tab="mc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20h20"/><path d="M4 20V9l6 4V9l6 4V6h4v14"/></svg>Machine &amp; Outils</button>
+  <button class="navitem" data-tab="us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19a8 8 0 1 1 16 0"/><path d="M12 19l4.5-6"/><circle cx="12" cy="19" r="1.4"/></svg>Usure outils</button>
   <button class="navitem" data-tab="lib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>Mes pièces</button>
   <button class="navitem" id="navAbout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>À propos &amp; dédicace</button>
   <div class="dfoot">Projet éducatif · © Khaled Bel Hedi</div>
@@ -401,6 +447,7 @@ table.pts .del{background:none;border:none;color:var(--red);font-size:1rem;paddi
         <button class="btn" id="btnAskAI"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>Analyser (IA)</button>
       </div>
       <textarea id="gtext" spellcheck="false" placeholder="Écrivez ou collez votre G-code ici…&#10;Cliquez sur une ligne : chaque mot est décodé dessous."></textarea>
+      <div id="alarmbox"></div>
       <div id="errbox"></div>
       <h3 class="sec">Décodeur de bloc — cliquez sur une ligne</h3>
       <div id="decode"><div class="hint">Placez le curseur sur une ligne du programme : chaque mot (G, M, X, F…) est expliqué ici, comme un dictionnaire vivant.</div></div>
@@ -519,6 +566,9 @@ table.pts .del{background:none;border:none;color:var(--red);font-size:1rem;paddi
       <h3 class="sec">Commande numérique</h3>
       <label>Directeur de commande<select id="mcCtrl"></select></label>
       <div class="hint" id="mcCtrlInfo"></div>
+      <h3 class="sec">Procédé</h3>
+      <label id="mcProcLab">Technologie d'usinage<select id="mcProc"></select></label>
+      <div class="hint" id="mcProcInfo"></div>
       <h3 class="sec">Machine (<span id="mcModeLbl"></span>)</h3>
       <label>Cinématique<select id="mcType"></select></label>
       <div class="hint" id="mcTypeInfo"></div>
@@ -545,6 +595,26 @@ table.pts .del{background:none;border:none;color:var(--red);font-size:1rem;paddi
       </div>
       <div class="hint" id="stkStatus"></div>
       <div class="dic-card" id="mcSummary"></div>
+    </div>
+    <!-- ================= USURE & DURÉE DE VIE ================= -->
+    <div class="tabpane" id="pane-us">
+      <h3 class="sec">Consommable actif</h3>
+      <div id="wearCard"></div>
+      <h3 class="sec">Seuil de changement</h3>
+      <div class="fieldgrid">
+        <label>Seuil (<span id="wearUnit">—</span>)<input type="number" id="wearSeuil" min="0.01" step="0.01"></label>
+        <label>Quantité de pièces<input type="number" id="wearQty" value="1" min="1" max="999" step="1"></label>
+      </div>
+      <div class="hint" id="wearNorm"></div>
+      <h3 class="sec">Programme courant</h3>
+      <div id="wearFcast"></div>
+      <div class="btnrow">
+        <button class="btn primary" id="wearAdd">✓ Comptabiliser l'usinage</button>
+        <button class="btn" id="wearEdge">↻ Arête suivante</button>
+        <button class="btn" id="wearNew">✦ Consommable neuf</button>
+      </div>
+      <h3 class="sec">Parc suivi</h3>
+      <div id="wearList"></div>
     </div>
     <!-- ================= MES PIÈCES (SQLite / stockage) ================= -->
     <div class="tabpane" id="pane-lib">
@@ -627,6 +697,7 @@ table.pts .del{background:none;border:none;color:var(--red);font-size:1rem;paddi
     </div>
     <div id="toast"></div>
     <div id="mobiletip">1 doigt : orbite · 2 doigts : zoom</div>
+  <div id="alarmChip">⛔ <span id="alarmChipN">0</span> ALARME(S) MACHINE</div>
   <div id="viewtools">
     <button id="vtMeas" title="Afficher les cotes mesurées"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17L17 3l4 4L7 21z"/><path d="M8 12l1.5 1.5M11 9l1.5 1.5M14 6l1.5 1.5"/></svg></button>
     <button id="vtIso" title="Vue isométrique"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5z"/><path d="M3.3 7.9L12 12.8l8.7-4.9M12 22.5V12.8"/></svg></button>
@@ -914,6 +985,85 @@ G00 Z25. M09
 M05
 M30
 %`;
+const EX_LASER = `%
+O0700 (DECOUPE LASER - PLATINE TOLE)
+(BRUT 80x60 EP.3 - TOLE ACIER)
+(M03 = FAISCEAU ON, M05 = OFF, S = PUISSANCE W)
+G21 G90 G94 G17 G54
+S2200
+(CONTOUR EXTERIEUR)
+G00 X8. Y8.
+G04 P400 (PERCAGE D AMORCE)
+M03
+G01 X72. F2500
+G01 Y52.
+G01 X8.
+G01 Y8.
+M05
+(FENETRE INTERIEURE)
+G00 X30. Y22.
+G04 P300
+M03
+G01 X50. F2200
+G02 X54. Y26. R4.
+G01 Y36.
+G01 X30.
+G01 Y22.
+M05
+(TROU DE FIXATION)
+G00 X64. Y46.
+G04 P250
+M03
+G03 X64. Y46. I-3. J0. F1800
+M05
+G00 X0. Y0.
+M30
+%`;
+const EX_WIRE = `%
+O0701 (EDM FIL - MATRICE DE DECOUPE)
+(BRUT 80x60 EP.15 - ACIER TREMPE)
+(OFFSET G41 = RAYON FIL + GAP - VOIR ONGLET MACHINE)
+G21 G90 G94 G17 G54
+S6
+(AMORCAGE DANS LE TROU DE DEPART D3 EN X20 Y20)
+G00 X20. Y20.
+M03 (FIL ET GENERATEUR)
+G41 G01 X26. Y20. F3.
+(PROFIL FERME DE LA MATRICE)
+G01 X58.
+G02 X62. Y24. R4.
+G01 Y40.
+G02 X58. Y44. R4.
+G01 X26.
+G02 X22. Y40. R4.
+G01 Y24.
+G02 X26. Y20. R4.
+(RETOUR AU POINT D AMORCAGE)
+G40 G01 X20. Y20.
+M05
+G00 X0. Y0.
+M30
+%`;
+const EX_SINKER = `%
+O0702 (EDM ENFONCAGE - EMPREINTE DE MOULE)
+(BRUT 80x60 EP.15 - ACIER A OUTILS)
+(L ELECTRODE DESCEND LENTEMENT ET EROde SON EMPREINTE)
+G21 G90 G94 G17 G54
+G00 Z25.
+(EMPREINTE 1)
+G00 X26. Y30.
+G00 Z2.
+G01 Z-6. F1.5
+G04 P800 (TEMPS D EROSION)
+G00 Z25.
+(EMPREINTE 2)
+G00 X54. Y30.
+G00 Z2.
+G01 Z-9. F1.2
+G04 P800
+G00 Z25.
+M30
+%`;
 const EX_MILL = `%
 O0002 (PLAQUE RAINUREE PERCEE - DEMO CODEG)
 (BRUT 80x60 EP.15 - ORIGINE COIN AVANT GAUCHE, Z0 SURFACE)
@@ -998,6 +1148,59 @@ function parseGCode(text, md, ctrl){
   const vars = {};
   const loopStack = [];
   let steps = 0;
+  const stats = {feedLen:0, holes:0, cutTime:0, zDown:0, beamTime:0};
+  const alarms = [];   // alarmes MACHINE (fin de course, rotation, axe absent) — distinctes des erreurs de programme
+  /* procédés faisceau (laser / fil) : M03 allume, M05 éteint ; allumé par défaut */
+  const beamProc = (typeof MACHINE!=="undefined") && !isTurn && (MACHINE.process==="laser" || MACHINE.process==="wire");
+  let beamOn = true;
+  /* enveloppe machine (contrôle post-processeur) */
+  const _mt = (typeof MACHINE!=="undefined")? (MACH_TYPES[isTurn?"turn":"mill"][MACHINE.mtype[isTurn?"turn":"mill"]]||{}) : {};
+  const TRAV = _mt.trav || null;
+  let LIM = null;
+  if(TRAV){
+    if(isTurn) LIM = {xMax:TRAV.xDia, zMin:-(TRAV.zTravel-TRAV.zPlus), zMax:TRAV.zPlus};
+    else {
+      const mg = ax => Math.max(0,(TRAV[ax]-(ax==="x"?STOCK.mill.w:ax==="y"?STOCK.mill.h:STOCK.mill.t))/2);
+      LIM = {xMin:-mg("x"), xMax:STOCK.mill.w+mg("x"), yMin:-mg("y"), yMax:STOCK.mill.h+mg("y"), zMin:-STOCK.mill.t-20, zMax:TRAV.z-STOCK.mill.t};
+    }
+  }
+  function checkEnvelope(t, li){
+    if(!LIM) return;
+    const A = (ax,val,mn,mx)=>{
+      if(val<mn-0.001 || val>mx+0.001){
+        const k="fc"+ax;
+        if(warned.has(k)) return;
+        warned.add(k);
+        const sens = val>mx? "+" : "−";
+        alarms.push({
+          kind:"travel", code:"OT-"+ax+sens, axis:ax, line:li+1,
+          msg:"Dépassement de course "+ax+" ("+sens+")",
+          value:+val.toFixed(3), unit:"mm", min:+mn.toFixed(1), max:+mx.toFixed(1),
+          machine:_mt.name,
+          fix:"Décalez l'origine pièce ou réduisez la cote : "+ax+" doit rester entre "+mn.toFixed(0)+" et "+mx.toFixed(0)+" mm sur cette machine."
+        });
+      }
+    };
+    if(isTurn){ A("X", t.x, -2, LIM.xMax); A("Z", t.z, LIM.zMin, LIM.zMax); }
+    else { A("X", t.x, LIM.xMin, LIM.xMax); A("Y", t.y, LIM.yMin, LIM.yMax); A("Z", t.z, LIM.zMin, LIM.zMax); }
+  }
+  function checkRotary(words, li){
+    if(!TRAV || !TRAV.rot) return;
+    for(const [ax,rng] of Object.entries(TRAV.rot)){
+      if(words[ax]!==undefined && (words[ax]<rng[0] || words[ax]>rng[1])){
+        const k="fr"+ax;
+        if(warned.has(k)) continue;
+        warned.add(k);
+        alarms.push({
+          kind:"rotary", code:"ROT-"+ax, axis:ax, line:li+1,
+          msg:"Axe rotatif "+ax+" hors plage",
+          value:words[ax], unit:"°", min:rng[0], max:rng[1],
+          machine:_mt.name,
+          fix:"Réorientez la pièce ou choisissez une autre position : "+ax+" est limité à ["+rng[0]+"° ; "+rng[1]+"°]."
+        });
+      }
+    }
+  }
   const comp = {side:0, pend:0, lastN:null};
   const warned = new Set();
   let sink = segs;
@@ -1011,15 +1214,33 @@ function parseGCode(text, md, ctrl){
 
   function addSeg(kind, pts, line, extra){
     if(pts.length<2) return;
+    if(kind!=="rapid"){
+      let L=0, dz=0;
+      for(let i=1;i<pts.length;i++){
+        L += Math.hypot(pts[i][0]-pts[i-1][0],(pts[i][1]||0)-(pts[i-1][1]||0),pts[i][2]-pts[i-1][2]);
+        const d = pts[i][2]-pts[i-1][2];
+        if(!isTurn && d<0) dz += -d;                       // plongée : perçage, enfonçage
+      }
+      stats.feedLen += L;
+      stats.zDown   += dz;
+      /* temps de coupe : tournage F en mm/tr × S tr/min ; fraisage F déjà en mm/min */
+      const vf = isTurn ? ((feed>0 && spin>0)? feed*spin : 0) : (feed>0? feed : 0);
+      if(vf>0){
+        const t = L/vf;                                    // minutes
+        stats.cutTime += t;
+        if(beamProc && beamOn) stats.beamTime += t;
+      }
+    }
     const sg = {kind, pts, line, f:feed, s:spin};
     if(extra && extra.th) sg.th = extra.th;
+    if(beamProc) sg.bm = beamOn;
     sink.push(sg);
   }
 
   /* --- compensation de rayon G41/G42 : decalage du trace --- */
   function compAdjust(pts){
     const side = comp.side; if(side===0) return pts;
-    const R = isTurn ? ((typeof MACHINE!=="undefined")? MACHINE.noseR():0.4) : STOCK.mill.toolDia/2;
+    const R = isTurn ? ((typeof MACHINE!=="undefined")? MACHINE.noseR():0.4) : STOCK.mill.toolDia/2; // laser/fil : demi-saignée
     const P = pts.map(p=> isTurn? [p[2], p[0]/2] : [p[0], p[1]]);
     const n = P.length;
     const segN = [];
@@ -1058,6 +1279,7 @@ function parseGCode(text, md, ctrl){
   }
 
   function lineTo(target, kind, line, extra){
+    checkEnvelope(target, line);
     let pts = [[pos.x,pos.y,pos.z],[target.x,target.y,target.z]];
     if(comp.side!==0 && !extra) pts = compAdjust(pts);
     addSeg(kind, pts, line, extra);
@@ -1410,6 +1632,7 @@ function parseGCode(text, md, ctrl){
     if(words.F!==undefined) feed=words.F;
     if(words.S!==undefined) spin=words.S;
 
+    checkRotary(words, li);
     // validation des axes selon la machine sélectionnée
     if(typeof MACHINE!=="undefined"){
       const mkey = md==="turn"? "turn" : "mill";
@@ -1418,7 +1641,14 @@ function parseGCode(text, md, ctrl){
         if(words[ax]!==undefined && !axOK.includes(ax) && !(ax==="Y"&&!isTurn)){
           const key="ax"+ax;
           if(!warned.has(key)){ warned.add(key);
-            errors.push("L"+(li+1)+" : axe "+ax+" programmé mais absent de la machine « "+MACH_TYPES[md==="turn"?"turn":"mill"][MACHINE.mtype[md]].name+" » — vérifiez l'onglet Machine & Outils."); }
+            const mn = MACH_TYPES[mkey][MACHINE.mtype[mkey]].name;
+            alarms.push({
+              kind:"axis", code:"AXE-"+ax, axis:ax, line:li+1,
+              msg:"Axe "+ax+" non disponible sur cette machine",
+              value:words[ax], unit:"", min:null, max:null, machine:mn,
+              fix:"La machine « "+mn+" » ne possède pas d'axe "+ax+". Choisissez une cinématique qui le comporte dans l'onglet Machine & Outils, ou retirez les mots "+ax+" du programme."
+            });
+          }
         }
       }
     }
@@ -1464,6 +1694,8 @@ function parseGCode(text, md, ctrl){
     /* --- M-codes HAAS : sous-programmes & fin --- */
     for(const m of mcodes){
       const mi = Math.round(m);
+      if(beamProc && (mi===3 || mi===7)) beamOn = true;
+      if(beamProc && (mi===5 || mi===9)) beamOn = false;
       if(mi===30 || mi===2) ended = true;
       else if(mi===97){
         const P=Math.round(words.P||0), L=Math.max(1, Math.round(words.L||1));
@@ -1508,6 +1740,7 @@ function parseGCode(text, md, ctrl){
       if(words.Q!==undefined) cycle.q=words.Q;
       const cz = cycle.z, cr = cycle.r!==undefined? cycle.r : 2;
       if(cz===undefined){ errors.push("L"+(li+1)+" : cycle G8x sans profondeur Z"); return; }
+      stats.holes++;
       lineTo({x:t.x,y:t.y,z:Math.max(pos.z,cr)}, "rapid", li);
       lineTo({x:t.x,y:t.y,z:cr}, "rapid", li);
       if((cycle.g===83||cycle.g===73) && cycle.q){
@@ -1551,7 +1784,7 @@ function parseGCode(text, md, ctrl){
     if(ended) break;
     if(jumpTo!==null){ li=jumpTo; jumpTo=null; }
   }
-  return {segs, errors};
+  return {segs, errors, stats, alarms};
 }
 
 /* ============================================================
@@ -1675,7 +1908,8 @@ function buildStock(){
     buildToolTurn();
   } else {
     const {w,h,t}=STOCK.mill;
-    const res = 160;
+    // grille plus fine pour laser / fil : la saignée est dix fois plus étroite qu'une fraise
+    const res = (typeof MACHINE!=="undefined" && MACHINE.isBeam())? 360 : 160;
     hm = {res, data:new Float32Array((res+1)*(res+1)).fill(0)};
     const geo = new THREE.PlaneGeometry(w,h,res,res);
     geo.rotateX(-Math.PI/2); // XZ plan, y up
@@ -1726,6 +1960,8 @@ function buildToolTurn(){
   const geo = new THREE.ExtrudeGeometry(sh, {depth:2.2, bevelEnabled:true, bevelThickness:.25, bevelSize:.25, bevelSegments:1});
   const insert = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({color:tl.gc||0xd8a52e, metalness:.55, roughness:.35}));
   insert.rotation.y = Math.PI/2;              // plaquette dans le plan de coupe
+  const kr = parseFloat(String(tl.kr||"90").replace(/[^\d.]/g,"")) || 90;
+  insert.rotation.z = (kr-90)*Math.PI/180;    // angle d'attaque réel (kr) : 90° = perpendiculaire à l'axe
   insert.position.z = -1.1;
   insert.position.y = .2;
   toolMesh.add(insert);
@@ -1734,21 +1970,32 @@ function buildToolTurn(){
     new THREE.MeshStandardMaterial({color:0xffb000, emissive:0x6b4a00, metalness:.4, roughness:.3}));
   nose.rotation.x = Math.PI/2;
   toolMesh.add(nose);
-  // corps de porte-outil + bride de serrage
-  const holder=new THREE.Mesh(new THREE.BoxGeometry(5,24,5), new THREE.MeshStandardMaterial({color:0x2f3844, metalness:.5, roughness:.6}));
-  holder.position.y=17; toolMesh.add(holder);
-  const clamp=new THREE.Mesh(new THREE.BoxGeometry(3.4,4.5,5.6), new THREE.MeshStandardMaterial({color:0x1d232b, metalness:.6, roughness:.5}));
-  clamp.position.y=5.6; toolMesh.add(clamp);
-  // tourelle motorisée (tours 3+ axes) / tête B (tour 5 axes)
+  /* PORTE-OUTIL RÉEL : barre carrée horizontale le long de l'axe machine Z,
+     plaquette en bout, arête présentée à 90° de l'axe de la pièce (angle kr).
+     La barre part vers +Z (côté tourelle) : elle survole la zone déjà usinée. */
+  const matHold = new THREE.MeshStandardMaterial({color:0x2f3844, metalness:.55, roughness:.55});
+  const shank = new THREE.Mesh(new THREE.BoxGeometry(30, 10, 10), matHold);
+  shank.position.set(18.5, 5.4, 0); toolMesh.add(shank);
+  // siège de plaquette : épaulement à 90° en bout de barre
+  const seat = new THREE.Mesh(new THREE.BoxGeometry(7, 5.4, 8.4), new THREE.MeshStandardMaterial({color:0x39434f, metalness:.6, roughness:.5}));
+  seat.position.set(4.6, 2.9, 0); toolMesh.add(seat);
+  // bride et vis de serrage au-dessus de la plaquette
+  const clamp = new THREE.Mesh(new THREE.BoxGeometry(4.6, 2.2, 5.2), new THREE.MeshStandardMaterial({color:0x1d232b, metalness:.65, roughness:.45}));
+  clamp.position.set(2.6, 3.4, 0); toolMesh.add(clamp);
+  const screw = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.05, 1.4, 14), new THREE.MeshStandardMaterial({color:0x8f9aa6, metalness:.8, roughness:.3}));
+  screw.position.set(2.2, 4.4, 0); toolMesh.add(screw);
+  // tourelle motorisée (tours 3+ axes) / tête B orientable (tour 5 axes)
   const mt = MACHINE.mtype.turn;
+  const turret = new THREE.Mesh(new THREE.BoxGeometry(12, 22, 22), new THREE.MeshStandardMaterial({color:0x252d36, metalness:.6, roughness:.6}));
+  turret.position.set(39, 8, 0); toolMesh.add(turret);
   if(mt==="t3"||mt==="t4"||mt==="t5"){
-    const live=new THREE.Mesh(new THREE.CylinderGeometry(3.2,3.2,9,20), new THREE.MeshStandardMaterial({color:0x455160, metalness:.6, roughness:.45}));
-    live.rotation.z=Math.PI/2; live.position.set(0,26,0);
+    const live=new THREE.Mesh(new THREE.CylinderGeometry(3.2,3.2,10,20), new THREE.MeshStandardMaterial({color:0x455160, metalness:.6, roughness:.45}));
+    live.rotation.z=Math.PI/2; live.position.set(29,16,0);
     toolMesh.add(live);
   }
   if(mt==="t5"){
     const bhead=new THREE.Mesh(new THREE.CylinderGeometry(4.5,4.5,14,22), new THREE.MeshStandardMaterial({color:0x39424c, metalness:.65, roughness:.4}));
-    bhead.rotation.z=Math.PI/5; bhead.position.set(3.5,33,0);
+    bhead.rotation.z=Math.PI/2.6; bhead.position.set(31,22,0);
     toolMesh.add(bhead);
   }
   scene.add(toolMesh);
@@ -1761,6 +2008,70 @@ function buildToolMill(){
   const matBody = new THREE.MeshStandardMaterial({color:0x39424c, metalness:.7, roughness:.4});
   const matCut  = new THREE.MeshStandardMaterial({color:0xffb000, metalness:.5, roughness:.35});
   const matIns  = new THREE.MeshStandardMaterial({color:0xd8a52e, metalness:.6, roughness:.3});
+  const T = STOCK.mill.t;
+  if(tl.kind==="laser"){
+    // tête de découpe : corps, buse conique, faisceau traversant
+    const head=new THREE.Mesh(new THREE.CylinderGeometry(9,9,16,26), matBody);
+    head.position.y=24; toolMesh.add(head);
+    const nozzle=new THREE.Mesh(new THREE.CylinderGeometry(1.6,6,10,26), matBody);
+    nozzle.position.y=11; toolMesh.add(nozzle);
+    const beam=new THREE.Mesh(new THREE.CylinderGeometry(Math.max(.35,r), Math.max(.25,r*0.7), T+14, 14),
+      new THREE.MeshBasicMaterial({color:0x53d8ff, transparent:true, opacity:.75}));
+    beam.position.y=3-(T+14)/2+3; toolMesh.add(beam);
+    const glow=new THREE.Mesh(new THREE.SphereGeometry(Math.max(1.1,r*3),16,12),
+      new THREE.MeshBasicMaterial({color:0x9fe9ff, transparent:true, opacity:.5}));
+    glow.position.y=-0.4; toolMesh.add(glow);
+    scene.add(toolMesh); return;
+  }
+  if(tl.kind==="wire"){
+    // fil tendu entre guide haut et guide bas : il traverse toute la pièce
+    const wr=Math.max(.09, (tl.wire||0.25)/2);
+    const wire=new THREE.Mesh(new THREE.CylinderGeometry(wr,wr,T+52,10),
+      new THREE.MeshStandardMaterial({color:0xffd45e, emissive:0x6b5200, metalness:.5, roughness:.35}));
+    wire.position.y=6-T/2; toolMesh.add(wire);
+    for(const gy of [16, -T-10]){
+      const guide=new THREE.Mesh(new THREE.CylinderGeometry(4.2,4.2,5,20), matBody);
+      guide.position.y=gy; toolMesh.add(guide);
+      const jet=new THREE.Mesh(new THREE.ConeGeometry(3,4,18),
+        new THREE.MeshBasicMaterial({color:0x53d8ff, transparent:true, opacity:.35}));
+      jet.position.y=gy+(gy>0?-3.6:3.6); jet.rotation.z=gy>0?Math.PI:0; toolMesh.add(jet);
+    }
+    const arm=new THREE.Mesh(new THREE.BoxGeometry(8,14,8), matBody);
+    arm.position.y=26; toolMesh.add(arm);
+    scene.add(toolMesh); return;
+  }
+  if(tl.kind==="sinkerR" || tl.kind==="sinkerS"){
+    // électrode (ronde ou carrée) + coulisseau : descend en Z et érode son empreinte
+    const matEl=new THREE.MeshStandardMaterial({color:tl.kind==="sinkerS"?0x4a4f57:0xc27b4a, metalness:.5, roughness:.55});
+    const el = tl.kind==="sinkerS"
+      ? new THREE.Mesh(new THREE.BoxGeometry(tl.d, 20, tl.d), matEl)
+      : new THREE.Mesh(new THREE.CylinderGeometry(r, r, 20, 30), matEl);
+    el.position.y=10; toolMesh.add(el);
+    const ram=new THREE.Mesh(new THREE.CylinderGeometry(Math.max(5,r*0.6), Math.max(5,r*0.6), 16, 22), matBody);
+    ram.position.y=28; toolMesh.add(ram);
+    const spark=new THREE.Mesh(new THREE.SphereGeometry(Math.max(1.4,r*0.5),14,10),
+      new THREE.MeshBasicMaterial({color:0x9fe9ff, transparent:true, opacity:.45}));
+    spark.position.y=-0.6; toolMesh.add(spark);
+    scene.add(toolMesh); return;
+  }
+  if(tl.kind==="drill"){
+    // foret : corps cylindrique, goujures hélicoïdales et pointe conique réelle
+    const ang = tl.name.includes("118")? 118 : 140;
+    const tipH = r/Math.tan(ang/2*Math.PI/180);
+    const tip=new THREE.Mesh(new THREE.ConeGeometry(r, tipH, 24), matCut);
+    tip.position.y=tipH/2; toolMesh.add(tip);
+    const body=new THREE.Mesh(new THREE.CylinderGeometry(r, r, 30, 24), matCut);
+    body.position.y=tipH+15; toolMesh.add(body);
+    for(let k=0;k<2;k++){
+      const g=new THREE.Mesh(new THREE.BoxGeometry(r*0.3, 26, r*0.3),
+        new THREE.MeshStandardMaterial({color:0x8a6a10, metalness:.5, roughness:.5}));
+      g.position.set(Math.cos(k*Math.PI)*r*0.75, tipH+14, Math.sin(k*Math.PI)*r*0.75);
+      g.rotation.y=-k*Math.PI; g.rotation.z=0.3; toolMesh.add(g);
+    }
+    const shank=new THREE.Mesh(new THREE.CylinderGeometry(r*0.95, r*0.95, 22, 24), matBody);
+    shank.position.y=tipH+41; toolMesh.add(shank);
+    scene.add(toolMesh); return;
+  }
   if(tl.kind==="face"){
     // fraise à plaquettes : corps disque + arbre + plaquettes en périphérie
     const body=new THREE.Mesh(new THREE.CylinderGeometry(r, r*0.86, 9, 40), matBody);
@@ -1867,12 +2178,12 @@ function drawPath(segs){
     // polyline machine pour l'animation
     for(let i=0;i<seg.pts.length;i++){
       const p=seg.pts[i];
-      if(poly.length===0){ poly.push({p, kind:seg.kind, line:seg.line, f:seg.f, s:seg.s, th:seg.th, cum:0}); continue; }
+      if(poly.length===0){ poly.push({p, kind:seg.kind, line:seg.line, f:seg.f, s:seg.s, th:seg.th, bm:seg.bm, cum:0}); continue; }
       const q=poly[poly.length-1].p;
       const d=Math.hypot(p[0]-q[0],(p[1]||0)-(q[1]||0),p[2]-q[2]);
       if(d<1e-7 && i===0) continue; // point partagé : il appartient au segment précédent (arrivée)
       totalLen+=d;
-      poly.push({p, kind:seg.kind, line:seg.line, f:seg.f, s:seg.s, th:seg.th, cum:totalLen});
+      poly.push({p, kind:seg.kind, line:seg.line, f:seg.f, s:seg.s, th:seg.th, bm:seg.bm, cum:totalLen});
     }
   }
   curDist=0; lastCutIdx=0;
@@ -1888,7 +2199,7 @@ function posAt(s){
   while(lo<hi-1){ const mid=(lo+hi)>>1; if(poly[mid].cum<=s) lo=mid; else hi=mid; }
   const a=poly[lo], b=poly[hi];
   const t=(s-a.cum)/Math.max(1e-9,(b.cum-a.cum));
-  return {p:[a.p[0]+(b.p[0]-a.p[0])*t, (a.p[1]||0)+((b.p[1]||0)-(a.p[1]||0))*t, a.p[2]+(b.p[2]-a.p[2])*t], kind:b.kind, line:b.line, f:b.f, s:b.s, th:b.th};
+  return {p:[a.p[0]+(b.p[0]-a.p[0])*t, (a.p[1]||0)+((b.p[1]||0)-(a.p[1]||0))*t, a.p[2]+(b.p[2]-a.p[2])*t], kind:b.kind, line:b.line, f:b.f, s:b.s, th:b.th, bm:b.bm};
 }
 
 /* --- enlèvement de matière entre deux abscisses curvilignes --- */
@@ -1898,12 +2209,12 @@ function cutRange(s0, s1){
   for(let s=s0; s<=s1; s+=step){
     const q=posAt(s);
     if(!q || q.kind==="rapid") continue;
-    cutAt(q.p, q.th);
+    cutAt(q.p, q.th, q.bm);
   }
   const qend=posAt(s1);
-  if(qend && qend.kind!=="rapid") cutAt(qend.p, qend.th);
+  if(qend && qend.kind!=="rapid") cutAt(qend.p, qend.th, qend.bm);
 }
-function cutAt(p, th){
+function cutAt(p, th, bm){
   if(mode==="turn"){
     const {len}=STOCK.turn;
     const z=p[2]; if(z<-len-1||z>1) return;
@@ -1924,14 +2235,31 @@ function cutAt(p, th){
     }
   } else {
     const {w,h,t,toolDia}=STOCK.mill; const res=hm.res;
-    const z=Math.max(-t, p[2]); if(z>=0) return;
-    const rr=toolDia/2;
+    const PR = (typeof MACHINE!=="undefined")? MACHINE.process : "mill";
+    const PT = (typeof MACHINE!=="undefined")? MACHINE.millTool() : null;
+    let z, rr, square=false;
+    if(PR==="laser" || PR==="wire"){
+      if(bm===false) return;              // faisceau ou générateur coupé : aucune érosion
+      z = -t;                                       // découpe traversante sur toute l'épaisseur
+      const cell = w/res;                           // pas de la grille de simulation
+      rr = Math.max(toolDia/2, cell*0.75);          // demi-saignée, élargie au minimum affichable
+      /* NOTE : sous la résolution de la grille, la saignée montrée est plus large que
+         la saignée réelle. La valeur physique (offset G41/G42) reste celle de l'outil. */
+    } else if(PR==="sinker"){
+      z = Math.max(-t, p[2]); if(z>=0) return;
+      rr = toolDia/2;
+      square = !!(PT && PT.sq);           // électrode carrée : empreinte à angles vifs
+    } else {
+      z = Math.max(-t, p[2]); if(z>=0) return;
+      rr = toolDia/2;
+    }
     const cx=p[0]/w*res, cy=p[1]/h*res;
     const rc=Math.ceil(rr/w*res)+1;
     for(let j=Math.max(0,Math.floor(cy-rc)); j<=Math.min(res,Math.ceil(cy+rc)); j++){
       for(let i=Math.max(0,Math.floor(cx-rc)); i<=Math.min(res,Math.ceil(cx+rc)); i++){
         const gx=i/res*w, gy=j/res*h;
-        if(Math.hypot(gx-p[0], gy-p[1])<=rr){
+        const inside = square? (Math.abs(gx-p[0])<=rr && Math.abs(gy-p[1])<=rr) : (Math.hypot(gx-p[0], gy-p[1])<=rr);
+        if(inside){
           const id=j*(res+1)+i;
           if(z<hm.data[id]){ hm.data[id]=z; hm.dirty=true; }
         }
@@ -2014,8 +2342,14 @@ function simulate(fromStart=true){
     txt = hdhToISO(txt);
     toast("🔄 Programme Heidenhain TNC traduit en ISO pour la simulation");
   }
-  const {segs,errors}=parseGCode(txt, mode, MACHINE.ctrl);
+  const {segs,errors,stats,alarms}=parseGCode(txt, mode, MACHINE.ctrl);
   lastSegs = segs;
+  lastStats = stats;
+  if(typeof renderAlarms==="function"){
+    renderAlarms(alarms);
+    if(alarms.length) toast("⛔ "+alarms.length+" alarme(s) machine — voir le bandeau rouge dans l'éditeur");
+  }
+  if(typeof renderWear==="function"){ renderWear(); wearAlarmCheck(true); }
   document.getElementById("errbox").textContent=errors.join("\n");
   buildStock();
   drawPath(segs);
@@ -2248,12 +2582,13 @@ function calc(){
 /* ============================================================
    UI — onglets, boutons, événements
    ============================================================ */
-const TAB_NAMES = {ed:"Éditeur & Simulation", pt:"Points → Code", di:"Dictionnaire", ca:"Vc · Avance", ai:"Copilote IA", qz:"Quiz", lib:"Mes pièces", mc:"Machine & Outils"};
+const TAB_NAMES = {ed:"Éditeur & Simulation", pt:"Points → Code", di:"Dictionnaire", ca:"Vc · Avance", ai:"Copilote IA", qz:"Quiz", lib:"Mes pièces", mc:"Machine & Outils", us:"Usure outils"};
 function switchTab(id){
   document.querySelectorAll(".navitem").forEach(b=>b.classList.toggle("on", b.dataset.tab===id));
   document.querySelectorAll(".tabpane").forEach(p=>p.classList.toggle("on", p.id==="pane-"+id));
   if(id==="lib" && typeof renderLib==="function") renderLib();
   if(id==="mc" && typeof renderMachinePane==="function") renderMachinePane();
+  if(id==="us" && typeof renderWear==="function"){ renderWear(); wearAlarmCheck(true); }
   const chip = document.getElementById("curTab");
   if(chip) chip.textContent = TAB_NAMES[id]||"";
   closeDrawer();
@@ -2296,13 +2631,20 @@ document.getElementById("mTurn").addEventListener("click",()=>setMode("turn"));
 document.getElementById("mMill").addEventListener("click",()=>setMode("mill"));
 
 document.getElementById("btnRun").addEventListener("click",()=>simulate());
+function demoForContext(){
+  if(mode==="turn") return EX_TURN;
+  if(MACHINE.process==="laser") return EX_LASER;
+  if(MACHINE.process==="wire") return EX_WIRE;
+  if(MACHINE.process==="sinker") return EX_SINKER;
+  return EX_MILL;
+}
 document.getElementById("btnMacro").addEventListener("click",()=>{
   document.getElementById("gtext").value = mode==="turn"? EX_MACRO_TURN : EX_MACRO_MILL;
   simulate();
   toast("ƒx Programme paramétré chargé — changez #1/#2/#3 en tête et resimulez !");
 });
 document.getElementById("btnExample").addEventListener("click",()=>{
-  document.getElementById("gtext").value = mode==="turn"? EX_TURN: EX_MILL; simulate();
+  document.getElementById("gtext").value = demoForContext(); simulate();
 });
 document.getElementById("btnDownload").addEventListener("click",()=>{
   const blob=new Blob([document.getElementById("gtext").value],{type:"text/plain"});
@@ -2610,16 +2952,16 @@ const CTRLS = {
 };
 const MACH_TYPES = {
   turn:{
-    t2:{name:"Tour 2 axes (X, Z)",        axes:["X","Z"],          ex:"HAAS ST-20, Mazak QT-200",   note:"Chariotage, dressage, filetage. Pas d'axe Y ni C."},
-    t3:{name:"Tour 3 axes (X, Z, C)",     axes:["X","Z","C"],      ex:"HAAS ST-20Y sans Y, DMG CLX", note:"Axe C + outils tournants : perçage/fraisage hors axe (C affiché, non simulé en 3D)."},
-    t4:{name:"Tour 4 axes (X, Z, C, Y)",  axes:["X","Z","C","Y"],  ex:"Mazak Integrex j-200",       note:"Axe Y pour fraisage décentré (déplacements Y affichés)."},
-    t5:{name:"Tour 5 axes (mill-turn +B)",axes:["X","Z","C","Y","B"],ex:"Mazak Integrex i-200, DMG CTX beta TC", note:"Tête B orientable. Simulation : tournage 2 axes + axes affichés au décodage."},
+    t2:{name:"Tour 2 axes (X, Z)",        axes:["X","Z"],          ex:"HAAS ST-20, Mazak QT-200",   note:"Chariotage, dressage, filetage. Pas d'axe Y ni C.", trav:{xDia:530, zPlus:80, zTravel:570}},
+    t3:{name:"Tour 3 axes (X, Z, C)",     axes:["X","Z","C"],      ex:"HAAS ST-20Y sans Y, DMG CLX", note:"Axe C + outils tournants : perçage/fraisage hors axe (C affiché, non simulé en 3D).", trav:{xDia:530, zPlus:80, zTravel:570}},
+    t4:{name:"Tour 4 axes (X, Z, C, Y)",  axes:["X","Z","C","Y"],  ex:"Mazak Integrex j-200",       note:"Axe Y pour fraisage décentré (déplacements Y affichés).", trav:{xDia:560, zPlus:100, zTravel:800, rot:{Y:[-105,105]}}},
+    t5:{name:"Tour 5 axes (mill-turn +B)",axes:["X","Z","C","Y","B"],ex:"Mazak Integrex i-200, DMG CTX beta TC", note:"Tête B orientable. Simulation : tournage 2 axes + axes affichés au décodage.", trav:{xDia:658, zPlus:120, zTravel:1011, rot:{B:[-30,210], Y:[-125,125]}}},
   },
   mill:{
-    f3:{name:"Fraiseuse 3 axes (X, Y, Z)",axes:["X","Y","Z"],      ex:"Fraiseuse conventionnelle CNC", note:"Simulation complète avec enlèvement de matière."},
-    cu:{name:"Centre d'usinage 3 axes",   axes:["X","Y","Z"],      ex:"HAAS VF-2, Fanuc Robodrill",  note:"Comme 3 axes + changeur d'outils ATC (T.. M06) et arrosage programmé."},
-    f4:{name:"Fraiseuse 4 axes (+A)",     axes:["X","Y","Z","A"],  ex:"HAAS VF-2 + plateau HRT160",  note:"Plateau rotatif A (mots A acceptés et décodés, rotation non simulée en 3D)."},
-    f5:{name:"Fraiseuse 5 axes (+A +C)",  axes:["X","Y","Z","A","C"],ex:"HAAS UMC-750, DMG DMU 50",  note:"Positionné 3+2 : axes rotatifs acceptés/décodés ; la coupe est simulée à plat."},
+    f3:{name:"Fraiseuse 3 axes (X, Y, Z)",axes:["X","Y","Z"],      ex:"Fraiseuse conventionnelle CNC", note:"Simulation complète avec enlèvement de matière.", trav:{x:600, y:400, z:400}},
+    cu:{name:"Centre d'usinage 3 axes",   axes:["X","Y","Z"],      ex:"HAAS VF-2, Fanuc Robodrill",  note:"Comme 3 axes + changeur d'outils ATC (T.. M06) et arrosage programmé.", trav:{x:762, y:406, z:508}},
+    f4:{name:"Fraiseuse 4 axes (+A)",     axes:["X","Y","Z","A"],  ex:"HAAS VF-2 + plateau HRT160",  note:"Plateau rotatif A (mots A acceptés et décodés, rotation non simulée en 3D).", trav:{x:762, y:406, z:508, rot:{A:[-999,999]}}},
+    f5:{name:"Fraiseuse 5 axes (+A +C)",  axes:["X","Y","Z","A","C"],ex:"HAAS UMC-750, DMG DMU 50",  note:"Positionné 3+2 : axes rotatifs acceptés/décodés ; la coupe est simulée à plat.", trav:{x:762, y:508, z:508, rot:{A:[-35,120], C:[-999,999]}}},
   }
 };
 const TURN_TOOLS = {
@@ -2633,6 +2975,9 @@ const TURN_TOOLS = {
   fil60: {name:"Plaquette filetage 60° (16ER AG60)",      r:0.1, a:60, L:7.5, g:"P25 PVD", gc:0xb08de0, app:"Filetage métrique extérieur au profil complet (G76/G92)", kr:"porte-outil SER"},
 };
 const MILL_TOOLS = {
+  for05: {name:"Foret carbure Ø5 — pointe 140°",  d:5,  z:2, kind:"drill", app:"Perçage court (3×D) : trous de passage M6, comptage par trou"},
+  for08: {name:"Foret carbure Ø8 — pointe 140°",  d:8,  z:2, kind:"drill", app:"Le foret d'atelier : avant-trou de taraudage M10, perçage 5×D"},
+  for10: {name:"Foret carbure Ø10 — pointe 118°", d:10, z:2, kind:"drill", app:"Perçages de fixation, débouchants — arrosage recommandé"},
   mono6: {name:"Monobloc carbure Ø6 — 2 dents",  d:6,  z:2, kind:"mono", app:"Rainurage, aluminium, petites poches — hélice 45°"},
   mono10:{name:"Monobloc carbure Ø10 — 4 dents (TiAlN)", d:10, z:4, kind:"mono", app:"Acier : contournage & rainures — l'outil universel d'atelier"},
   mono12:{name:"Monobloc carbure Ø12 — 3 dents", d:12, z:3, kind:"mono", app:"Bon compromis débit copeaux / rigidité"},
@@ -2651,13 +2996,57 @@ const MATERIALS = {
   fonte:  {name:"Fonte GG25",              vcT:[150,250], vcM:[100,180], fz:[0.08,0.15], f:[0.15,0.35]},
   pom:    {name:"Plastique POM-C",         vcT:[300,500], vcM:[250,450], fz:[0.10,0.25], f:[0.10,0.30]},
 };
+const PROCESSES = {
+  mill:  {name:"Fraisage — enlèvement par fraise", short:"Fraisage",
+          info:"Coupe par outil tournant. Profondeur pilotée par Z, largeur par le Ø de l'outil.",
+          mach:"HAAS VF-2, DMG DMU, Fanuc Robodrill", cuts:"3 axes"},
+  laser: {name:"Découpe laser — tôle", short:"Laser",
+          info:"Faisceau focalisé : la coupe est <b>traversante</b> sur toute l'épaisseur. La saignée (kerf) remplace le Ø d'outil. <b>M03</b> allume le faisceau, <b>M05</b> l'éteint, <b>S</b> = puissance (W), <b>G04</b> = temps de perçage d'amorce.",
+          mach:"Trumpf TruLaser, Bystronic, Amada", cuts:"2 axes + traversant"},
+  wire:  {name:"Électroérosion à fil — robot fil", short:"Fil (EDM)",
+          info:"Un fil sous tension érode la matière sur toute la hauteur : coupe <b>traversante</b>, profil fermé partant d'un trou d'amorçage. L'offset G41/G42 vaut rayon du fil + gap d'étincelle. <b>M03/M05</b> = fil et générateur.",
+          mach:"Sodick, Mitsubishi MV, Fanuc RoboCut, AgieCharmilles", cuts:"2 axes (U/V conique non simulé)"},
+  sinker:{name:"Électroérosion par enfonçage — robot de forme", short:"Enfonçage (EDM)",
+          info:"Une électrode de la forme du creux descend en Z et érode son empreinte. La cote finale est la forme de l'électrode <b>plus le gap</b>. Pas de rotation : l'avance Z est lente.",
+          mach:"Sodick AQ, Mitsubishi EA, AgieCharmilles Form", cuts:"Enfonçage Z"},
+};
+const PROC_TOOLS = {
+  laser: {
+    fib15:{name:"Laser fibre 1,5 kW — kerf 0,15 mm", d:0.15, kind:"laser", pw:1500, app:"Tôle acier ≤ 6 mm, inox ≤ 4 mm — coupe fine et rapide"},
+    fib30:{name:"Laser fibre 3 kW — kerf 0,25 mm",   d:0.25, kind:"laser", pw:3000, app:"Acier ≤ 15 mm, alu ≤ 8 mm — usage général tôlerie"},
+    co2:  {name:"Laser CO₂ 4 kW — kerf 0,35 mm",     d:0.35, kind:"laser", pw:4000, app:"Fortes épaisseurs, bords très propres, moins rapide"},
+  },
+  wire: {
+    w020:{name:"Fil laiton Ø0,20 — kerf 0,24 mm", d:0.24, wire:0.20, kind:"wire", app:"Détails fins, petits rayons intérieurs (R min ≈ 0,12 mm)"},
+    w025:{name:"Fil laiton Ø0,25 — kerf 0,29 mm", d:0.29, wire:0.25, kind:"wire", app:"Le fil standard d'atelier : bon compromis vitesse / précision"},
+    w030:{name:"Fil laiton Ø0,30 — kerf 0,35 mm", d:0.35, wire:0.30, kind:"wire", app:"Fortes hauteurs, ébauche rapide, fil plus robuste"},
+  },
+  sinker: {
+    cu12:{name:"Électrode cuivre Ø12 — gap 0,05",      d:12.1, kind:"sinkerR", app:"Empreintes rondes, bon état de surface"},
+    gr20:{name:"Électrode graphite Ø20 — gap 0,08",    d:20.16, kind:"sinkerR", app:"Enlèvement rapide, électrode facile à usiner"},
+    sq10:{name:"Électrode graphite carrée 10×10 — gap 0,05", d:10.1, kind:"sinkerS", sq:true, app:"Poches et rainures à angles vifs (impossible en fraisage)"},
+  },
+};
 const MACHINE = {
   ctrl:  store.get("cg_ctrl") || "haas",
   mtype: {turn: store.get("cg_mt_turn") || "t2", mill: store.get("cg_mt_mill") || "cu"},
-  tool:  {turn: store.get("cg_tl_turn") || "cnmg08", mill: store.get("cg_tl_mill") || "mono10"},
+  tool:  {turn: store.get("cg_tl_turn") || "cnmg08", mill: store.get("cg_tl_mill") || "mono10",
+          laser: store.get("cg_tl_laser") || "fib30", wire: store.get("cg_tl_wire") || "w025",
+          sinker: store.get("cg_tl_sinker") || "cu12"},
   mat:   store.get("cg_mat") || "c45",
+  process: store.get("cg_proc") || "mill",
+  toolKey(){ return mode==="turn"? "turn" : (this.process==="mill"? "mill" : this.process); },
+  toolSet(){ return mode==="turn"? TURN_TOOLS : (this.process==="mill"? MILL_TOOLS : PROC_TOOLS[this.process]); },
+  proc(){ return mode==="turn"? PROCESSES.mill : PROCESSES[this.process]; },
+  isBeam(){ return mode!=="turn" && (this.process==="laser" || this.process==="wire"); },
   noseR(){ return (TURN_TOOLS[this.tool.turn]||{r:0.4}).r; },
-  millTool(){ return MILL_TOOLS[this.tool.mill] || MILL_TOOLS.mono10; },
+  millTool(){
+    if(mode!=="turn" && this.process!=="mill"){
+      const set=PROC_TOOLS[this.process];
+      return set[this.tool[this.process]] || set[Object.keys(set)[0]];
+    }
+    return MILL_TOOLS[this.tool.mill] || MILL_TOOLS.mono10;
+  },
   machType(){ return this.mtype[mode]; },
   axesOK(){ return (MACH_TYPES[mode][this.machType()]||{axes:["X","Y","Z"]}).axes; },
 };
@@ -2731,36 +3120,52 @@ function applyMachine(resim){
       + MACH_TYPES[mode][MACHINE.machType()].name.replace(/\s*\(.*/,"")
       + " · " + (mode==="turn"? tl.name.split(" —")[0]+" rε"+tl.r : "Ø"+tl.d+" "+tl.z+"T");
   }
+  if(typeof renderWear==="function"){ renderWear(); wearAlarmCheck(true); }
   if(resim && typeof simulate==="function" && document.getElementById("gtext").value.trim()) simulate();
 }
 function renderMachinePane(){
   if(!document.getElementById("mcCtrl")) return;
   renderStockCfg();
   fillSel("mcCtrl", CTRLS, MACHINE.ctrl);
+  const procBox=document.getElementById("mcProcLab");
+  procBox.style.display = mode==="turn"? "none":"flex";
+  document.getElementById("mcProcInfo").style.display = mode==="turn"? "none":"block";
+  if(mode!=="turn"){
+    fillSel("mcProc", PROCESSES, MACHINE.process);
+    const pr=PROCESSES[MACHINE.process];
+    document.getElementById("mcProcInfo").innerHTML = pr.info+"<br><b>Machines :</b> "+pr.mach+" · <b>Coupe :</b> "+pr.cuts;
+  }
   document.getElementById("mcModeLbl").textContent = mode==="turn"?"tournage":"fraisage";
   fillSel("mcType", MACH_TYPES[mode], MACHINE.machType());
-  fillSel("mcTool", mode==="turn"?TURN_TOOLS:MILL_TOOLS, MACHINE.tool[mode]);
+  fillSel("mcTool", MACHINE.toolSet(), MACHINE.tool[MACHINE.toolKey()]);
   fillSel("mcMat", MATERIALS, MACHINE.mat);
   document.getElementById("mcCtrlInfo").innerHTML = CTRLS[MACHINE.ctrl].info;
   const mt = MACH_TYPES[mode][MACHINE.machType()];
-  document.getElementById("mcTypeInfo").innerHTML = "<b>Axes : "+mt.axes.join(", ")+"</b> · ex. "+mt.ex+"<br>"+mt.note;
-  const tl = mode==="turn"? TURN_TOOLS[MACHINE.tool.turn] : MILL_TOOLS[MACHINE.tool.mill];
-  document.getElementById("mcToolInfo").innerHTML = mode==="turn"
-    ? "<b>rε = "+tl.r+" mm</b> (utilisé par la compensation G41/G42) · attaque "+tl.kr+"<br>"+tl.app
-    : "<b>Ø "+tl.d+" mm · "+tl.z+" dents</b> (Ø utilisé par la simulation et G41/G42)<br>"+tl.app;
+  const tv=mt.trav||{};
+  const tvs = mode==="turn"? ("Courses : Ø"+tv.xDia+" · Z "+tv.zTravel+" mm") : ("Courses : X"+tv.x+" · Y"+tv.y+" · Z"+tv.z+" mm");
+  document.getElementById("mcTypeInfo").innerHTML = "<b>Axes : "+mt.axes.join(", ")+"</b> · "+tvs+" · ex. "+mt.ex+"<br>"+mt.note;
+  const tl = mode==="turn"? TURN_TOOLS[MACHINE.tool.turn] : MACHINE.millTool();
+  let ti;
+  if(mode==="turn") ti = "<b>rε = "+tl.r+" mm</b> (utilisé par la compensation G41/G42) · attaque "+tl.kr+" — barre présentée à 90° de l'axe<br>"+tl.app;
+  else if(MACHINE.process==="laser") ti = "<b>Saignée (kerf) "+tl.d+" mm · "+tl.pw+" W</b> — remplace le Ø d'outil dans la simulation et dans l'offset G41/G42. Coupe traversante.<br>"+tl.app;
+  else if(MACHINE.process==="wire") ti = "<b>Fil Ø"+tl.wire+" mm · saignée "+tl.d+" mm</b> (fil + gap d'étincelle) — c'est cette valeur à mettre en offset G41/G42. Coupe traversante.<br>"+tl.app;
+  else if(MACHINE.process==="sinker") ti = "<b>Électrode "+(tl.sq? tl.d+"×"+tl.d+" mm (carrée)" : "Ø"+tl.d+" mm")+"</b> — gap d'étincelle inclus : l'empreinte obtenue est la forme de l'électrode.<br>"+tl.app;
+  else ti = "<b>Ø "+tl.d+" mm · "+tl.z+" dents</b> (Ø utilisé par la simulation et G41/G42)<br>"+tl.app;
+  document.getElementById("mcToolInfo").innerHTML = ti;
   const m = MATERIALS[MACHINE.mat];
   document.getElementById("mcMatInfo").innerHTML =
     "Vc tournage <b>"+m.vcT[0]+"–"+m.vcT[1]+"</b> · Vc fraisage <b>"+m.vcM[0]+"–"+m.vcM[1]+" m/min</b> · fz <b>"+m.fz[0]+"–"+m.fz[1]+" mm/dent</b> · f <b>"+m.f[0]+"–"+m.f[1]+" mm/tr</b> (carbure)";
   document.getElementById("mcSummary").innerHTML =
     '<span class="code">⚙</span><p><b>'+CTRLS[MACHINE.ctrl].name+'</b> · '+mt.name+'<br>'
-    +tl.name+' · '+m.name+'</p><p style="margin-top:6px">Ces choix pilotent : le dialecte du simulateur, la validation des axes, le rayon de compensation, le Ø de fraise, les suggestions Vc·F et le Copilote IA.</p>';
+    +(mode==="turn"?"":MACHINE.proc().short+" · ")+tl.name+' · '+m.name+'</p><p style="margin-top:6px">Ces choix pilotent : le dialecte du simulateur, la validation des axes, le rayon de compensation, le Ø de fraise, les suggestions Vc·F et le Copilote IA.</p>';
 }
-["mcCtrl","mcType","mcTool","mcMat"].forEach(id=>{
+["mcCtrl","mcType","mcTool","mcMat","mcProc"].forEach(id=>{
   document.getElementById(id).addEventListener("change",e=>{
     const v=e.target.value;
     if(id==="mcCtrl"){ MACHINE.ctrl=v; store.set("cg_ctrl",v); }
     if(id==="mcType"){ MACHINE.mtype[mode]=v; store.set("cg_mt_"+mode,v); }
-    if(id==="mcTool"){ MACHINE.tool[mode]=v; store.set("cg_tl_"+mode,v); }
+    if(id==="mcProc"){ MACHINE.process=v; store.set("cg_proc",v); }
+    if(id==="mcTool"){ const k=MACHINE.toolKey(); MACHINE.tool[k]=v; store.set("cg_tl_"+k,v); }
     if(id==="mcMat"){ MACHINE.mat=v; store.set("cg_mat",v); }
     applyMachine(true);
     toast("⚙ Configuration appliquée — outil et machine mis à jour dans la simulation");
@@ -3020,7 +3425,8 @@ function RC_stlToMill(verts, srcName){
 }
 function RC_millProgram(hmData, srcName, opts){
   const {map,nx,ny,W,H,T}=hmData;
-  const tool=MACHINE.millTool(), rT=tool.d/2;
+  // le retro-CAM produit un programme de FRAISAGE : il utilise la fraise, jamais la saignee d'un procede faisceau
+  const tool=MILL_TOOLS[MACHINE.tool.mill]||MILL_TOOLS.mono10, rT=tool.d/2;
   const c=RC_cut("mill");
   const ap=Math.min(opts.ap||3, T);
   // dilatation par le rayon d'outil (anti-talonnage) : filtre max carré séparable
@@ -3483,6 +3889,235 @@ document.getElementById("rcFile").addEventListener("change",e=>{
 /* champ profondeur visible en fraisage */
 (function(){ const upd=()=>{ document.getElementById("rcDepthLab").style.display = mode==="mill"? "flex":"none"; };
   const old=setMode; window.setMode=function(m){ old(m); upd(); }; upd(); })();
+
+/* --- bandeau d'alarmes machine (distinct des erreurs de programme) --- */
+let lastAlarms = [];
+function renderAlarms(alarms){
+  lastAlarms = alarms || [];
+  const box = document.getElementById("alarmbox");
+  const chip = document.getElementById("alarmChip");
+  if(!box) return;
+  if(!lastAlarms.length){
+    box.style.display="none"; box.innerHTML="";
+    if(chip) chip.style.display="none";
+    return;
+  }
+  const rows = lastAlarms.map(a=>{
+    const lim = (a.min===null||a.min===undefined)
+      ? "axe absent de la cinématique"
+      : "limite <b>["+a.min+" ; "+a.max+"]</b> "+a.unit;
+    return '<div class="alrow" data-line="'+a.line+'">'
+      +'<div class="altop"><span class="alcode">'+escapeHtml(a.code)+'</span>'
+      +'<span class="almsg">'+escapeHtml(a.msg)+'</span>'
+      +'<span class="alline">bloc L'+a.line+'</span></div>'
+      +'<div class="aldet">programmé <b>'+a.axis+' = '+a.value+(a.unit||"")+'</b> · '+lim+' · '+escapeHtml(a.machine)+'</div>'
+      +'<div class="alfix">'+escapeHtml(a.fix)+'</div></div>';
+  }).join("");
+  box.style.display="block";
+  box.innerHTML = '<div class="alhead">⛔ '+lastAlarms.length+' alarme'+(lastAlarms.length>1?"s":"")
+    +' machine — la commande réelle stopperait le cycle</div>'
+    +'<div class="alwrap">'+rows+'<button class="btn small" id="alReset">RESET — acquitter</button></div>';
+  if(chip){ chip.style.display="block"; document.getElementById("alarmChipN").textContent=lastAlarms.length; }
+  // clic sur une alarme : placer le curseur sur le bloc fautif
+  box.querySelectorAll(".alrow").forEach(r=>r.addEventListener("click",()=>{
+    const ta=document.getElementById("gtext");
+    const ln=parseInt(r.dataset.line)||1;
+    const lines=ta.value.split("\n");
+    let pos=0; for(let i=0;i<ln-1 && i<lines.length;i++) pos+=lines[i].length+1;
+    ta.focus(); ta.setSelectionRange(pos, pos+(lines[ln-1]||"").length);
+    if(typeof decodeAtCursor==="function") decodeAtCursor();
+  }));
+  document.getElementById("alReset").addEventListener("click",()=>{
+    box.style.display="none";
+    if(chip) chip.style.display="none";
+    toast("Alarmes acquittées — elles réapparaîtront à la prochaine simulation si la cause persiste");
+  });
+}
+/* ============================================================
+   USURE & DURÉE DE VIE DES CONSOMMABLES
+   Compteurs persistants, seuils d'atelier, alarme de changement.
+   ============================================================ */
+const WEAR_TYPES = {
+  insert:{unit:"min", label:"Temps de coupe par arête", def:15,
+          from:st=>st.cutTime, edges:true,
+          norm:"Base ISO 3685 : essai de durée de vie à 15 min de coupe par arête. Ajustez selon votre norme d'atelier et le critère d'usure retenu (VB = 0,3 mm en général)."},
+  mill:  {unit:"mm",  label:"Longueur usinée en avance", def:40000,
+          from:st=>st.feedLen,
+          norm:"Repère atelier : 30 à 60 m de parcours en avance pour une fraise carbure revêtue en acier. Réglez le seuil selon votre suivi réel."},
+  drill: {unit:"mm",  label:"Longueur percée", def:25000, holes:true,
+          from:st=>st.zDown,
+          norm:"Repère atelier : 20 à 40 m percés pour un foret carbure avec arrosage. Le nombre de trous restants est déduit de la profondeur moyenne des trous du programme."},
+  nozzle:{unit:"h",   label:"Heures de faisceau", def:100,
+          from:st=>st.beamTime/60,
+          norm:"Buse et lentille de protection : contrôle visuel toutes les 100 h de faisceau, remplacement selon l'état des projections."},
+  wire:  {unit:"m",   label:"Fil consommé", def:6000,
+          from:st=>st.beamTime*9,
+          norm:"Bobine de 8 kg de laiton Ø0,25 ≈ 6 000 m. Consommation estimée à 9 m/min de découpe (vitesse de défilement typique)."},
+  elec:  {unit:"mm",  label:"Usure de l'électrode", def:2,
+          from:st=>st.zDown*0.02,
+          norm:"Usure linéaire estimée à 2 % de la profondeur érodée (cuivre). Graphite : environ 1 %. Au-delà, reprendre ou remplacer l'électrode."},
+};
+const INSERT_EDGES = {cnmg08:4, cnmg12:4, wnmg08:6, tnmg04:6, dnmg04:4, vnmg02:4, ccgt02:2, cnmgK:4, fil60:3};
+const MAT_LIFE = {c45:1, crmo:0.75, inox:0.5, alu:2, fonte:0.9, pom:2.5};
+
+const WEAR = {
+  key(){
+    const t = MACHINE.toolKey();
+    return "cg_wear_" + t + "_" + MACHINE.tool[t];
+  },
+  type(){
+    if(mode==="turn") return "insert";
+    if(MACHINE.process==="laser") return "nozzle";
+    if(MACHINE.process==="wire")  return "wire";
+    if(MACHINE.process==="sinker") return "elec";
+    return (MACHINE.millTool().kind==="drill")? "drill" : "mill";
+  },
+  toolName(){ return (mode==="turn"? TURN_TOOLS[MACHINE.tool.turn] : MACHINE.millTool()).name; },
+  defThreshold(){
+    const ty=WEAR_TYPES[this.type()];
+    const f = (this.type()==="insert"||this.type()==="mill"||this.type()==="drill")? (MAT_LIFE[MACHINE.mat]||1) : 1;
+    return +(ty.def*f).toFixed(ty.unit==="mm"?0:2);
+  },
+  read(){
+    let r=null;
+    try{ r=JSON.parse(store.get(this.key())||"null"); }catch(e){}
+    if(!r || typeof r.used!=="number") r={used:0, edge:1, seuil:this.defThreshold(), parts:0, since:Date.now()};
+    if(typeof r.seuil!=="number" || r.seuil<=0) r.seuil=this.defThreshold();
+    return r;
+  },
+  write(r){ store.set(this.key(), JSON.stringify(r)); },
+  edges(){ return mode==="turn"? (INSERT_EDGES[MACHINE.tool.turn]||4) : 1; },
+  /* consommation prévue par le programme courant */
+  forecast(st){
+    if(!st) return 0;
+    const v = WEAR_TYPES[this.type()].from(st);
+    return isFinite(v)? v : 0;
+  },
+  status(r){
+    const p = r.seuil>0? r.used/r.seuil : 0;
+    if(p>=1)   return {k:"alarm", txt:"À CHANGER", pct:100};
+    if(p>=0.8) return {k:"warn",  txt:"à surveiller", pct:Math.round(p*100)};
+    if(p<=0)   return {k:"new",   txt:"neuf", pct:0};
+    return {k:"ok", txt:"en service", pct:Math.round(p*100)};
+  },
+};
+
+/* --- rendu et actions du panneau d'usure --- */
+let lastStats = null;
+function wearFmt(v, unit){
+  if(unit==="mm") return v>=1000? (v/1000).toFixed(2)+" m" : v.toFixed(0)+" mm";
+  if(unit==="min") return v>=60? (v/60).toFixed(2)+" h" : v.toFixed(1)+" min";
+  if(unit==="h") return v.toFixed(2)+" h";
+  if(unit==="m") return v>=1000? (v/1000).toFixed(2)+" km" : v.toFixed(0)+" m";
+  return v.toFixed(2)+" "+unit;
+}
+function renderWear(){
+  const card=document.getElementById("wearCard");
+  if(!card) return;
+  const ty=WEAR_TYPES[WEAR.type()], r=WEAR.read(), st=WEAR.status(r);
+  const edges=WEAR.edges();
+  document.getElementById("wearUnit").textContent=ty.unit;
+  const sEl=document.getElementById("wearSeuil");
+  if(document.activeElement!==sEl) sEl.value=r.seuil;
+  document.getElementById("wearNorm").innerHTML="<b>Norme / repère :</b> "+ty.norm+
+    (["insert","mill","drill"].includes(WEAR.type())? " Seuil ajusté à la matière ("+MATERIALS[MACHINE.mat].name+" ×"+(MAT_LIFE[MACHINE.mat]||1)+")." : "");
+
+  card.className="wcard "+(st.k==="alarm"?"alarm":st.k==="warn"?"warn":"");
+  card.innerHTML=
+    '<div class="wtitle">'+escapeHtml(WEAR.toolName())+'</div>'+
+    '<div class="wsub">'+ty.label+(ty.edges? " · arête "+r.edge+" / "+edges : "")+' · '+r.parts+' pièce(s) comptabilisée(s)</div>'+
+    '<div class="wbar '+(st.k==="alarm"?"alarm":st.k==="warn"?"warn":"")+'"><i style="width:'+Math.min(100,st.pct)+'%"></i></div>'+
+    '<div class="wrow"><span class="wstate '+st.k+'">'+st.txt+'</span>'+
+    '<b>'+wearFmt(r.used,ty.unit)+' / '+wearFmt(r.seuil,ty.unit)+'</b></div>';
+
+  // prévision du programme courant
+  const f=document.getElementById("wearFcast");
+  if(!lastStats){ f.innerHTML='<div class="hint">Lancez une simulation : la consommation du programme sera estimée ici.</div>'; }
+  else{
+    const q=Math.max(1, parseInt(document.getElementById("wearQty").value)||1);
+    const per=WEAR.forecast(lastStats), tot=per*q;
+    const after=r.used+tot, depasse=after>r.seuil;
+    const reste=Math.max(0, r.seuil-r.used);
+    let piecesRest = per>0? Math.floor(reste/per) : null;
+    let holesTxt="";
+    if(ty.holes && lastStats.holes>0){
+      const prof=lastStats.zDown/lastStats.holes;
+      holesTxt='<div class="wrow"><span>Trous du programme · profondeur moyenne</span><b>'+lastStats.holes+' × '+prof.toFixed(1)+' mm</b></div>'+
+               '<div class="wrow"><span>Trous restants avec ce foret</span><b>'+(prof>0? Math.floor(reste/prof) : "—")+'</b></div>';
+    }
+    f.innerHTML=
+      '<div class="wrow"><span>Consommation pour 1 pièce</span><b>'+wearFmt(per,ty.unit)+'</b></div>'+
+      '<div class="wrow"><span>Pour '+q+' pièce(s)</span><b>'+wearFmt(tot,ty.unit)+'</b></div>'+
+      holesTxt+
+      '<div class="wrow"><span>Pièces encore possibles avant changement</span><b>'+(piecesRest===null? "—" : piecesRest)+'</b></div>'+
+      '<div class="wrow"><span>Longueur usinée · temps de coupe</span><b>'+wearFmt(lastStats.feedLen,"mm")+' · '+wearFmt(lastStats.cutTime,"min")+'</b></div>'+
+      (depasse? '<div class="walert">⚠ Cette série dépasse la durée de vie ('+wearFmt(after,ty.unit)+' pour un seuil de '+wearFmt(r.seuil,ty.unit)+
+                '). Prévoyez le changement '+(ty.edges? "ou l\'indexation d\'arête" : "")+' avant la fin de série.</div>'
+              : '<div class="wok">✔ La série tient dans la durée de vie restante ('+wearFmt(reste,ty.unit)+').</div>');
+  }
+
+  // parc suivi : tous les consommables ayant un compteur
+  const list=document.getElementById("wearList");
+  const rows=[];
+  try{
+    for(let i=0;i<localStorage.length;i++){
+      const k=localStorage.key(i);
+      if(!k || k.indexOf("cg_wear_")!==0) continue;
+      let v=null; try{ v=JSON.parse(localStorage.getItem(k)); }catch(e){}
+      if(!v) continue;
+      const parts=k.replace("cg_wear_","").split("_");
+      const fam=parts.shift(), id=parts.join("_");
+      const set = fam==="turn"? TURN_TOOLS : fam==="mill"? MILL_TOOLS : (PROC_TOOLS[fam]||{});
+      const nm = (set[id]||{}).name || id;
+      const tyy = fam==="turn"? WEAR_TYPES.insert : fam==="laser"? WEAR_TYPES.nozzle : fam==="wire"? WEAR_TYPES.wire
+                : fam==="sinker"? WEAR_TYPES.elec : ((MILL_TOOLS[id]||{}).kind==="drill"? WEAR_TYPES.drill : WEAR_TYPES.mill);
+      const stt=WEAR.status(v);
+      rows.push('<div class="wrow"><span>'+escapeHtml(nm)+'</span><span><span class="wstate '+stt.k+'">'+stt.txt+'</span> <b>'+
+                wearFmt(v.used,tyy.unit)+' / '+wearFmt(v.seuil,tyy.unit)+'</b></span></div>');
+    }
+  }catch(e){}
+  list.innerHTML = rows.length? rows.join("") : '<div class="hint">Aucun consommable suivi pour l\'instant.</div>';
+}
+function wearAlarmCheck(silent){
+  const r=WEAR.read(), st=WEAR.status(r), ty=WEAR_TYPES[WEAR.type()];
+  const badge=document.getElementById("wearBadge");
+  if(badge) badge.style.display = st.k==="alarm"? "inline-flex" : "none";
+  if(st.k==="alarm" && !silent){
+    toast("🔴 "+WEAR.toolName()+" : durée de vie atteinte ("+wearFmt(r.used,ty.unit)+") — "+
+          (WEAR.edges()>1? "indexez l'arête suivante" : "changez le consommable"));
+  }
+  return st;
+}
+document.getElementById("wearSeuil").addEventListener("input",e=>{
+  const r=WEAR.read(); const v=parseFloat(e.target.value);
+  if(v>0){ r.seuil=v; WEAR.write(r); renderWear(); wearAlarmCheck(true); }
+});
+document.getElementById("wearQty").addEventListener("input",()=>renderWear());
+document.getElementById("wearAdd").addEventListener("click",()=>{
+  if(!lastStats){ toast("Lancez d'abord une simulation du programme."); return; }
+  const q=Math.max(1, parseInt(document.getElementById("wearQty").value)||1);
+  const r=WEAR.read(), ty=WEAR_TYPES[WEAR.type()];
+  r.used += WEAR.forecast(lastStats)*q;
+  r.parts += q;
+  WEAR.write(r);
+  renderWear();
+  const st=wearAlarmCheck(false);
+  if(st.k!=="alarm") toast("✓ "+q+" pièce(s) comptabilisée(s) — "+wearFmt(r.used,ty.unit)+" cumulés");
+});
+document.getElementById("wearEdge").addEventListener("click",()=>{
+  const edges=WEAR.edges(), r=WEAR.read();
+  if(edges<=1){ toast("Ce consommable n'a pas d'arête indexable — utilisez « Consommable neuf »."); return; }
+  if(r.edge>=edges){ toast("Toutes les arêtes ("+edges+") sont utilisées : plaquette à remplacer."); return; }
+  r.edge++; r.used=0; WEAR.write(r);
+  renderWear(); wearAlarmCheck(true);
+  toast("↻ Arête "+r.edge+" / "+edges+" — compteur remis à zéro");
+});
+document.getElementById("wearNew").addEventListener("click",()=>{
+  if(!confirm("Déclarer un consommable NEUF ? Le compteur et l'arête repartent de zéro.")) return;
+  WEAR.write({used:0, edge:1, seuil:WEAR.read().seuil, parts:0, since:Date.now()});
+  renderWear(); wearAlarmCheck(true);
+  toast("✦ Consommable neuf déclaré");
+});
 /* ============================================================
    MES PIÈCES — persistance des pièces fabriquées
    Android : SQLite natif via le pont CodeGNative (hors cache)
@@ -3728,8 +4363,9 @@ function aiSystem(){
    +"3. Reste dans les limites du brut. Profondeurs de passe raisonnables. En tournage, approche à X = Øbrut+2, Z2.\n"
    +"4. Mets le programme dans UN SEUL bloc ``` … ```. Avant le bloc : 2-3 phrases d'explication en français. Après : rien ou une remarque brève.\n"
    +"5. Dialecte HAAS accepté et simulé : M97 Pn Ln (sous-programme local, retour M99), G53 (coordonnées machine), G50 S (limite broche)"+(mode==="mill"?", G12/G13 (poche circulaire I/K/Q)":"")+". Les machines de l'utilisateur sont des HAAS.\n"
-   +"6. CONFIGURATION ATELIER : commande "+CTRLS[MACHINE.ctrl].name+" · "+MACH_TYPES[mode][MACHINE.machType()].name+" · outil "+(mode==="turn"?TURN_TOOLS[MACHINE.tool.turn].name:MILL_TOOLS[MACHINE.tool.mill].name)+" · matière "+MATERIALS[MACHINE.mat].name+". Respecte la syntaxe de CETTE commande (Siemens : G71=métrique, cycles CYCLEnn, M17 ; Heidenhain : format conversationnel L/CC/C/TOOL CALL ; Fanuc/HAAS/Mazak EIA/Fagor : ISO). Choisis Vc et avances adaptées à cette matière et cet outil.\n"
-   +"7. Pour les analyses : réponds en français, bref et structuré, en citant les numéros de ligne.";
+   +"6. PROCEDE : "+MACHINE.proc().name+(MACHINE.isBeam()? " — la coupe est TRAVERSANTE sur toute l'epaisseur ; M03 allume le faisceau/generateur, M05 l'eteint ; l'offset G41/G42 vaut la demi-saignee ("+(STOCK.mill.toolDia/2).toFixed(3)+" mm) ; pas de profondeur de passe Z, seulement des contours fermes." : (MACHINE.process==="sinker"? " — l'electrode descend en Z et erode son empreinte : programme des plongees lentes G01 Z- avec temporisation G04, pas de contournage." : ""))+"\n"
+   +"7. CONFIGURATION ATELIER : commande "+CTRLS[MACHINE.ctrl].name+" · "+MACH_TYPES[mode][MACHINE.machType()].name+" · outil "+(mode==="turn"?TURN_TOOLS[MACHINE.tool.turn].name:MILL_TOOLS[MACHINE.tool.mill].name)+" · matière "+MATERIALS[MACHINE.mat].name+". Respecte la syntaxe de CETTE commande (Siemens : G71=métrique, cycles CYCLEnn, M17 ; Heidenhain : format conversationnel L/CC/C/TOOL CALL ; Fanuc/HAAS/Mazak EIA/Fagor : ISO). Choisis Vc et avances adaptées à cette matière et cet outil.\n"
+   +"8. Pour les analyses : réponds en français, bref et structuré, en citant les numéros de ligne.";
 }
 function aiRender(){
   const box = document.getElementById("aiChat");
